@@ -22,7 +22,6 @@ json_filename = './out.json'
 def recognize_captcha():
     captcha_response = requests.get(prefix + 'validateCodeAction.do?random=', cookies=cookies)
     captcha_origin = Image.open(io.BytesIO(captcha_response.content))
-    captcha_origin.show()
     result = ''
     code = pytesseract.image_to_string(captcha_origin)
     if len(code) == 4:
